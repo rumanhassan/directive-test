@@ -60,7 +60,7 @@ describe('TrueFalseValue [true-false-value.directive]', () => {
         el = fixture.debugElement.query(By.css('input'));
     });
 
-    it('should set trueValue when checkbox is enabled', () => {
+    it('should set trueValue when checkbox is enabled', fakeAsync(() => {
         // const hostComponent = new TestHostComponent();
         el.triggerEventHandler('click', { target: { checked: true } });
         fixture.detectChanges();
@@ -69,6 +69,6 @@ describe('TrueFalseValue [true-false-value.directive]', () => {
             'sssss---------',
             component.form.value
         );
-        expect(component.form.value).toEqual('yes');
-    });
+        expect(component.form.value.testDirective).toEqual('yes');
+    }));
 });
