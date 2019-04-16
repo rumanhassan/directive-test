@@ -23,8 +23,8 @@ import { RouterModule } from '@angular/router';
           type="checkbox"
           formControlName="testDirective"
           trueFalseValue
-          [trueValue]="yes"
-          [falseValue]="no"
+          [trueValue]="'yes'"
+          [falseValue]="'no'"
         />
         Test Directive
       </form>
@@ -58,11 +58,12 @@ describe('TrueFalseValue [true-false-value.directive]', () => {
         fixture = TestBed.createComponent(TestHostComponent);
         component = fixture.debugElement.componentInstance;
         el = fixture.debugElement.query(By.css('input'));
+        fixture.detectChanges();
     });
 
     it('should set trueValue when checkbox is enabled', fakeAsync(() => {
         // const hostComponent = new TestHostComponent();
-        el.triggerEventHandler('click', { target: { checked: true } });
+        el.triggerEventHandler('change', { target: { checked: true } });
         fixture.detectChanges();
         tick();
         console.log(
